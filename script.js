@@ -95,8 +95,10 @@ function Validator(options) {
               switch(input.type){
                 case "checkbox":
                    if(!input.matches(':checked')){
-                    values[input.name] = '';
-                    return values;
+                    if(!values[input.name]){
+                      values[input.name] = '';
+                      return values;
+                    }
                    }
                    if(!Array.isArray(values[input.name])){
                       values[input.name] = []
@@ -104,6 +106,10 @@ function Validator(options) {
                   values[input.name].push(input.value)
                   break;
                 case "radio": 
+                  if(!values[input.name]){
+                    values[input.name] = '';
+                    return values;
+                  }
                   values[input.name] = formElement.querySelector('input[name="' + input.name+'"]:checked').value;
                 break;
                 case "file":
