@@ -106,9 +106,9 @@ function Validator(options) {
                 case "radio": 
                   values[input.name] = formElement.querySelector('input[name="' + input.name+'"]:checked').value;
                 break;
-                // case "file":
-                //   // values[input.name] = input.;
-                //   break;
+                case "file":
+                   values[input.name] = input.files;
+                  break;
                 default :
                   values[input.name] = input.value;
               }
